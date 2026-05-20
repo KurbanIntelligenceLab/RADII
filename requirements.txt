@@ -1,0 +1,13 @@
+# Core: install torch first, then PyG and optional extensions (see below)
+torch>=2.0.0,<2.7
+torch_geometric>=2.4.0
+# ADiT/SchNet use radius_graph from torch-cluster. Install a wheel that matches your
+# torch and CUDA version (PyG index: https://data.pyg.org/whl/). Example for torch 2.8 + CUDA 12.8:
+#   pip install torch-cluster -f https://data.pyg.org/whl/torch-2.8.0+cu128.html
+# If you use a dev/build of torch (e.g. 2.11), either use a released torch (2.8) or build
+# torch-cluster from source; prebuilt wheels may segfault due to ABI mismatch.
+numpy>=1.24,<3
+pandas>=2.0
+scipy>=1.10
+ase>=3.22
+tqdm>=4.65
