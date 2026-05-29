@@ -23,6 +23,7 @@ from typing import Optional, Tuple
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from huggingface_hub import PyTorchModelHubMixin
 from torch_geometric.data import Batch
 from torch_geometric.nn import radius_graph, global_mean_pool
 from torch_geometric.nn.models import SchNet
@@ -485,7 +486,15 @@ class FlowMMVectorField(nn.Module):
 # =============================================================================
 
 
-class FlowMM(nn.Module):
+class FlowMM(
+    nn.Module,
+    PyTorchModelHubMixin,
+    library_name="radii",
+    repo_url="https://github.com/KurbanIntelligenceLab/RADII",
+    pipeline_tag="other",
+    license="mit",
+    tags=["materials-science", "crystal-structures", "generative-models", "kdd-2026"],
+):
     """
     FlowMM: Riemannian Flow Matching for Crystal Generation
 

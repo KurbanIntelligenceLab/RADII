@@ -13,7 +13,7 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 from scipy.spatial.transform import Rotation as R
 
-from create_radii import config as radii_config
+from . import config as radii_config
 
 # Worker globals (set by pool initializer; used by _process_train_id / _process_ood)
 _TRAIN_GRID: Optional[Dict[float, np.ndarray]] = None

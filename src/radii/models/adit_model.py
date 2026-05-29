@@ -13,6 +13,7 @@ import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from huggingface_hub import PyTorchModelHubMixin
 from torch_geometric.data import Batch
 from torch_geometric.data.data import DataEdgeAttr, DataTensorAttr
 from torch_geometric.data.storage import GlobalStorage
@@ -408,7 +409,15 @@ class UnitCellEncoder(nn.Module):
 # =============================================================================
 
 
-class ADiTUnitCell(nn.Module):
+class ADiTUnitCell(
+    nn.Module,
+    PyTorchModelHubMixin,
+    library_name="radii",
+    repo_url="https://github.com/KurbanIntelligenceLab/RADII",
+    pipeline_tag="other",
+    license="mit",
+    tags=["materials-science", "crystal-structures", "generative-models", "kdd-2026"],
+):
     """
     All-atom Diffusion Transformer for RADII benchmark Task 1.
     Generates nanoparticle structures conditioned on unit cells.

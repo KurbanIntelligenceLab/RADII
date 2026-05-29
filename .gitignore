@@ -2,8 +2,9 @@
 __pycache__/
 *.py[codz]
 *$py.class
-radii*/
-scripts/
+# Local 12 GB data cache (regenerated from Zenodo seed). Anchor to repo root so
+# it does NOT match the installable package at src/radii/.
+/radii/
 rebuttal_results/
 reviews/
 docs/
@@ -11,6 +12,11 @@ results/
 .DS_Store
 results_radii.zip
 figures*
+paper/
+# Seed archive lives on Zenodo (DOI 10.5281/zenodo.20431021), not in the repo.
+radii_raw.zip
+# Local agent + IDE metadata.
+.claude/
 # C extensions
 *.so
 

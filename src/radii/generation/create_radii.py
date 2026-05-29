@@ -10,8 +10,8 @@ Uses create_radii.config and create_radii.generate_quaternions (TARGET_TOTAL_FIL
 SPLIT_FRACTIONS, MAX_ROTS_PER_FILE, etc.; no create_c2np).
 
 Usage:
-    python -m create_radii.create_radii --raw-data radii_raw --output radii
-    python -m create_radii.create_radii --raw-data radii_raw.zip --output radii
+    python -m radii.generation.create_radii --raw-data radii_raw --output radii
+    python -m radii.generation.create_radii --raw-data radii_raw.zip --output radii
 
 Final output structure:
     radii/
@@ -31,17 +31,8 @@ import tempfile
 import zipfile
 from pathlib import Path
 
-try:
-    # When run as a module: python -m create_radii.create_radii
-    from create_radii.config import QUATERNIONS_SUBDIR, UNIT_CELLS_SUBDIR
-    from create_radii.generate_quaternions import run_radii_quaternions
-except ImportError:
-    # When run as a script: python create_radii/create_radii.py
-    import config
-    from generate_quaternions import run_radii_quaternions
-
-    QUATERNIONS_SUBDIR = config.QUATERNIONS_SUBDIR
-    UNIT_CELLS_SUBDIR = config.UNIT_CELLS_SUBDIR
+from .config import QUATERNIONS_SUBDIR, UNIT_CELLS_SUBDIR
+from .generate_quaternions import run_radii_quaternions
 
 
 def _is_macos_metadata(path: Path) -> bool:
@@ -208,9 +199,9 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-    python -m create_radii.create_radii
-    python -m create_radii.create_radii --raw-data radii_raw --output radii
-    python -m create_radii.create_radii --raw-data radii_raw.zip --output radii
+    python -m radii.generation.create_radii
+    python -m radii.generation.create_radii --raw-data radii_raw --output radii
+    python -m radii.generation.create_radii --raw-data radii_raw.zip --output radii
         """,
     )
     parser.add_argument(

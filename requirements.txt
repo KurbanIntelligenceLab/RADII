@@ -11,3 +11,6 @@ pandas>=2.0
 scipy>=1.10
 ase>=3.22
 tqdm>=4.65
+# For scripts/zenodo_upload.py (dataset DOI minting)
+requests>=2.31
+python-dotenv>=1.0
